@@ -263,7 +263,6 @@ const Footer = () => {
                 </div>
             </div>
 
-            {/* Footer Bottom */}
             <div className="border-t border-white/10 py-8 max-w-7xl mx-auto px-4">
                 <div className="container-custom">
                     <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
