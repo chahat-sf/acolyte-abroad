@@ -17,10 +17,10 @@ export default function Navbar() {
 
                     {/* Logo */}
                     <Link href="/" className="flex flex-col leading-none">
-                        <Image src={"/images/abroad-living.webp"} alt="Acolyte Abroad" height={60} className="w-24 h-auto object-contain lg:w-[110px]" width={120} />
+                        <Image src={"/images/Abroad-blue-logo.webp"} alt="Acolyte Abroad" height={60} className="w-24 h-auto object-contain lg:w-[110px]" width={120} />
                     </Link>
                     {/* Search Bar */}
-                    {/* <div className="hidden md:flex items-center rounded-full border border-gray-300 bg-white px-4 py-2 shadow-sm">
+                    <div className="hidden md:flex items-center rounded-full border border-gray-300 bg-white px-4 py-2 shadow-sm">
                         <FiSearch className="mr-2 text-gray-400" />
 
                         <input
@@ -28,24 +28,26 @@ export default function Navbar() {
                             placeholder="Search paths..."
                             className="w-[220px] bg-transparent text-sm text-gray-700 outline-none placeholder:text-gray-400"
                         />
-                    </div> */}
+                    </div>
                 </div>
 
                 {/* Center Nav */}
                 <nav className="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-600">
-                    <Link href="#process" className="transition hover:text-black">
-                        Process
+                    <Link href="/jobs-abroad" className="transition hover:text-black">
+                        Jobs Abroad
                     </Link>
 
-                    <Link href="#featured-works" className="transition hover:text-black">
-                        Featured Works
+                    <Link href="/jobs" className="transition hover:text-black">
+                        Jobs
                     </Link>
 
-                    <Link href="#ecosystem" className="transition hover:text-black">
-                        Ecosystem
+                    <Link href="/accommodation" className="transition hover:text-black">
+                        Accommodation
                     </Link>
 
-
+                    <Link href="/destinations" className="transition hover:text-black">
+                        Destinations
+                    </Link>
                 </nav>
 
                 {/* Right Button */}

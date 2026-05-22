@@ -19,7 +19,6 @@ const page = () => {
         <FeaturedWorks />
       </div>
       <MakeWorkEasy />
-      <FeaturedWorks />
       <div id="ecosystem">
         <EcosystemSection />
       </div>

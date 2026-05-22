@@ -95,7 +95,7 @@ export default function FeaturedWorks() {
                 {/* Right: Image */}
                 <div className="relative w-full md:w-1/2 h-[280px] md:h-[480px] lg:h-[652px]  p-4">
                   <Image
-                    src="/images/students.png"
+                    src="/images/studentimg1.webp"
                     alt="Students using laptop"
                     fill
                     className="object-contain p-4"
@@ -164,7 +164,7 @@ export default function FeaturedWorks() {
                 {/* Right: Image */}
                 <div className="relative w-full md:w-1/2 h-[280px] md:h-[480px] lg:h-[652px]  p-4">
                   <Image
-                    src="/images/students.png"
+                    src="/images/studentimg2.webp"
                     alt="Students using laptop"
                     fill
                     className="object-contain p-4"
@@ -234,7 +234,7 @@ export default function FeaturedWorks() {
                 {/* Right: Image */}
                 <div className="relative w-full md:w-1/2 h-[280px] md:h-[480px] lg:h-[652px]  p-4">
                   <Image
-                    src="/images/students.png"
+                    src="/images/studentimg3.webp"
                     alt="Students using laptop"
                     fill
                     className="object-contain p-4"
