@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 import ScrollStack from "./ScrollStack";
+import ResumeLeadPopup from "./Resumeleadpopup";
 
 const features = [
   "AI-MATCHED COLLEGE SHORTLISTING",
@@ -19,6 +21,7 @@ const forLiving = [
   "Lease help & move-in checklist",
 ];
 export default function FeaturedWorks() {
+  const [popupOpen, setPopupOpen] = useState(false);
   return (
     <section className="min-h-screen bg-[#f8fbff] flex flex-col items-center py-12 md:py-16 px-4">
       {/* Heading */}
@@ -40,7 +43,7 @@ export default function FeaturedWorks() {
 
       <ScrollStack className="w-full max-w-6xl" useWindowScroll={true}>
         {/* Card 1*/}
-        <div className="scroll-stack-card w-full relative">
+        <div id="for-students" className="scroll-stack-card w-full relative">
           {/* Blue background card with folder tab using clip-path */}
           <div className="relative w-full">
             {/* Folder tab */}
@@ -90,6 +93,12 @@ export default function FeaturedWorks() {
                       </div>
                     </div>
                   ))}
+                  <button
+                    onClick={() => setPopupOpen(true)}
+                    className="mt-4 w-fit bg-white text-[#0052FF] font-black text-xs md:text-sm uppercase tracking-widest px-6 py-3 rounded-full shadow-md hover:bg-blue-50 transition-colors cursor-pointer"
+                  >
+                    Get Started →
+                  </button>
                 </div>
 
                 {/* Right: Image */}
@@ -108,7 +117,7 @@ export default function FeaturedWorks() {
         </div>
 
         {/* Card 2 */}
-        <div className="scroll-stack-card w-full relative">
+        <div id="job-seekers" className="scroll-stack-card w-full relative">
           {/* Blue background card with folder tab using clip-path */}
           <div className="relative w-full">
             {/* Folder tab */}
@@ -159,6 +168,12 @@ export default function FeaturedWorks() {
                       </div>
                     </div>
                   ))}
+                  <button
+                    onClick={() => setPopupOpen(true)}
+                    className="mt-4 w-fit bg-[#0052FF] text-white font-black text-xs md:text-sm uppercase tracking-widest px-6 py-3 rounded-full shadow-md hover:bg-blue-700 transition-colors cursor-pointer"
+                  >
+                    Get Started →
+                  </button>
                 </div>
 
                 {/* Right: Image */}
@@ -177,7 +192,7 @@ export default function FeaturedWorks() {
         </div>
 
         {/* Card 3 */}
-        <div className="scroll-stack-card w-full relative">
+        <div id="for-living" className="scroll-stack-card w-full relative">
           {/* Blue background card with folder tab using clip-path */}
           <div className="relative w-full">
             {/* Folder tab */}
@@ -229,6 +244,12 @@ export default function FeaturedWorks() {
                       </div>
                     </div>
                   ))}
+                  <button
+                    onClick={() => setPopupOpen(true)}
+                    className="mt-4 w-fit bg-white text-[#0052FF] font-black text-xs md:text-sm uppercase tracking-widest px-6 py-3 rounded-full shadow-md hover:bg-blue-50 transition-colors cursor-pointer"
+                  >
+                    Get Started →
+                  </button>
                 </div>
 
                 {/* Right: Image */}
@@ -246,6 +267,14 @@ export default function FeaturedWorks() {
           </div>
         </div>
       </ScrollStack>
+
+      {popupOpen && (
+        <ResumeLeadPopup
+          isOpen={popupOpen}
+          onClose={() => setPopupOpen(false)}
+          source="featured_works_cta"
+        />
+      )}
     </section>
   );
 }

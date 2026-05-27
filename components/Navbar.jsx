@@ -33,19 +33,19 @@ export default function Navbar() {
 
                 {/* Center Nav */}
                 <nav className="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-600">
-                    <Link href="/jobs-abroad" className="transition hover:text-black">
+                    <Link href="/#job-seekers" className="transition hover:text-black">
                         Jobs Abroad
                     </Link>
 
-                    <Link href="/jobs" className="transition hover:text-black">
+                    <Link href="/#job-seekers" className="transition hover:text-black">
                         Jobs
                     </Link>
 
-                    <Link href="/accommodation" className="transition hover:text-black">
+                    <Link href="/#for-living" className="transition hover:text-black">
                         Accommodation
                     </Link>
 
-                    <Link href="/destinations" className="transition hover:text-black">
+                    <Link href="/#for-students" className="transition hover:text-black">
                         Destinations
                     </Link>
                 </nav>
@@ -53,7 +53,7 @@ export default function Navbar() {
                 {/* Right Button */}
                 <button
                     onClick={() => setPopupOpen(true)}
-                    className="flex items-center gap-2 rounded-full bg-[#eef2ff] px-5 py-2.5 text-sm font-semibold text-[#1d4ed8] transition hover:bg-[#dbe4ff]"
+                    className="flex items-center gap-2 rounded-full bg-[#eef2ff] px-5 py-2.5 text-sm font-semibold text-[#1d4ed8] transition hover:bg-[#dbe4ff] cursor-pointer"
                 >
                     Get Started
                     <FiArrowUpRight className="text-base" />

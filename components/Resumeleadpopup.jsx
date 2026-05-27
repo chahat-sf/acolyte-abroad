@@ -248,24 +248,15 @@ export default function ResumeLeadPopup({ isOpen, onClose, source = "resume_popu
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    full_name: n,
+                    name: n,
                     email: em,
                     phone: ph,
-                    countryCode: phoneCode,
-                    country_code: phoneCode,
                     university: uni,
-                    proofFile: "",
-                    proofFileName: filename,
-                    booking_completion,
-                    booking_completion_filename: filename,
-                    referral_confirmation: "",
-                    referral_confirmation_filename: "",
-                    conversation_proofs: "",
-                    conversation_proofs_filename: "",
-                    additional_documents,
                     country,
                     intake,
                     source,
+                    booking_completion,
+                    additional_documents,
                 }),
             });
 
@@ -302,14 +293,14 @@ export default function ResumeLeadPopup({ isOpen, onClose, source = "resume_popu
                 className="fixed inset-0 z-[1001] flex items-center justify-center p-4"
             >
                 <div
-                    className="relative w-full max-w-xl max-h-screen overflow-y-auto rounded-[28px] bg-white shadow-2xl border border-slate-200"
+                    className="relative w-full max-w-xl rounded-[28px] bg-white shadow-2xl border border-slate-200 flex flex-col overflow-hidden"
+                    style={{ maxHeight: "90vh", scrollbarWidth: "none" }}
                     onClick={e => e.stopPropagation()}
-                    style={{ scrollbarWidth: "none" }}
                 >
 
 
                     {/* Body */}
-                    <div className="bg-slate-100 rounded-b-[28px] p-3 md:p-6">
+                    <div className="bg-slate-100 p-3 md:p-5 overflow-y-auto flex-1" style={{ scrollbarWidth: "none" }}>
                         {!done ? (
                             <>
                                 {/* Heading */}
@@ -324,7 +315,7 @@ export default function ResumeLeadPopup({ isOpen, onClose, source = "resume_popu
 
                                 </div>
 
-                                <div className="space-y-5 max-w-xl mx-auto">
+                                <div className="space-y-3 max-w-xl mx-auto">
 
                                     {/* Drop zone */}
                                     <div
@@ -336,7 +327,7 @@ export default function ResumeLeadPopup({ isOpen, onClose, source = "resume_popu
                                         onDragLeave={e => { e.preventDefault(); setDragOver(false); }}
                                         onDrop={e => { e.preventDefault(); setDragOver(false); if (e.dataTransfer.files?.length) addFiles(e.dataTransfer.files); }}
                                         className={`
-                      border-2 border-dashed rounded-[24px] p-2 md:p-6 text-center cursor-pointer transition-all duration-300 relative overflow-hidden
+                      border-2 border-dashed rounded-2xl py-3 px-3 text-center cursor-pointer transition-all duration-300 relative overflow-hidden
                       ${files.length > 0 ? "border-emerald-400 bg-emerald-50" : dragOver ? "border-blue-500 bg-blue-50" : "border-blue-300 bg-white"}
                     `}
                                     >
@@ -348,52 +339,52 @@ export default function ResumeLeadPopup({ isOpen, onClose, source = "resume_popu
                                             className="hidden"
                                             onChange={e => { if (e.target.files?.length) addFiles(e.target.files); e.target.value = ""; }}
                                         />
-                                        <div className="relative z-10">
-                                            <div className={`w-6 h-6 md:w-12 md:h-12 mx-auto rounded-full flex items-center justify-center mb-2 shadow border transition-colors
+                                        <div className="relative z-10 flex items-center justify-center gap-3">
+                                            <div className={`w-7 h-7 shrink-0 rounded-full flex items-center justify-center shadow border transition-colors
                         ${files.length > 0 ? "bg-white border-emerald-300 text-emerald-600" : "bg-white border-slate-200 text-[#161D83]"}`}>
                                                 {files.length > 0
-                                                    ? <CheckCircle2 className="w-2 h-2 md:w-4 md:h-4" strokeWidth={2} />
-                                                    : <Upload className="w-2 h-2 md:w-4 md:h-4" strokeWidth={2} />}
+                                                    ? <CheckCircle2 className="w-3.5 h-3.5" strokeWidth={2} />
+                                                    : <Upload className="w-3.5 h-3.5" strokeWidth={2} />}
                                             </div>
-                                            <h3 className="text-xs md:text-sm md:text-base font-bold text-slate-900 mb-1">
-                                                {files.length > 0 ? "Files added" : "Drop resume here"}
-                                            </h3>
-                                            <p className="text-xs text-slate-500 font-medium mb-4 md:block hidden   ">
-                                                {files.length > 0
-                                                    ? "Click to add more (max 5, 10 MB each)."
-                                                    : "PDF, JPG, or PNG "}
-                                            </p>
-                                            <span className="inline-block bg-[#161D83] text-white text-[8px] md:text-[10px] font-black uppercase tracking-widest px-4 md:px-6 py-1 md:py-2 rounded-full shadow-md cursor-pointer hover:bg-blue-900 transition-colors active:scale-95">
-                                                Browse Files
+                                            <div className="text-left">
+                                                <h3 className="text-xs font-bold text-slate-900 leading-tight">
+                                                    {files.length > 0 ? "Files added" : "Drop resume here"}
+                                                </h3>
+                                                <p className="text-[10px] text-slate-500 font-medium">
+                                                    {files.length > 0 ? "Click to add more (max 5, 10 MB each)." : "PDF, JPG, or PNG"}
+                                                </p>
+                                            </div>
+                                            <span className="ml-auto inline-block bg-[#161D83] text-white text-[8px] font-black uppercase tracking-widest px-3 py-1 rounded-full shadow-md cursor-pointer hover:bg-blue-900 transition-colors active:scale-95 shrink-0">
+                                                Browse
                                             </span>
                                         </div>
                                     </div>
 
                                     {/* File list */}
                                     {files.length > 0 && (
-                                        <ul className="space-y-2">
+                                        <ul className="space-y-1.5">
                                             {files.map((f, i) => (
-                                                <li key={`${i}-${f.name}`} className="flex items-center justify-between gap-3 bg-emerald-50 border border-emerald-200 rounded-2xl p-3.5">
-                                                    <div className="flex items-center gap-3 min-w-0">
-                                                        <div className="w-9 h-9 shrink-0 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow">
-                                                            <Check className="w-4 h-4" strokeWidth={2} />
+                                                <li key={`${i}-${f.name}`} className="flex items-center justify-between gap-2 bg-emerald-50 border border-emerald-200 rounded-xl px-3 py-2">
+                                                    <div className="flex items-center gap-2 min-w-0">
+                                                        <div className="w-6 h-6 shrink-0 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow">
+                                                            <Check className="w-3 h-3" strokeWidth={2.5} />
                                                         </div>
                                                         <div className="min-w-0">
-                                                            <div className="flex items-center gap-2 flex-wrap">
-                                                                <p className="truncate text-xs md:text-sm font-bold text-slate-900">{f.name}</p>
+                                                            <div className="flex items-center gap-1.5 flex-wrap">
+                                                                <p className="truncate text-xs font-bold text-slate-900">{f.name}</p>
                                                                 {i === 0 && (
-                                                                    <span className="shrink-0 rounded bg-emerald-600/15 px-1.5 py-0.5 text-[9px] font-black uppercase tracking-widest text-emerald-800">
+                                                                    <span className="shrink-0 rounded bg-emerald-600/15 px-1 py-0.5 text-[8px] font-black uppercase tracking-widest text-emerald-800">
                                                                         Primary
                                                                     </span>
                                                                 )}
                                                             </div>
-                                                            <p className="text-xs text-slate-500">{(f.size / 1024 / 1024).toFixed(1)} MB</p>
+                                                            <p className="text-[10px] text-slate-500">{(f.size / 1024 / 1024).toFixed(1)} MB</p>
                                                         </div>
                                                     </div>
                                                     <button
                                                         type="button"
                                                         onClick={() => removeFile(i)}
-                                                        className="shrink-0 rounded-lg px-2.5 py-1.5 text-xs font-bold text-slate-500 hover:bg-white hover:text-red-500 transition-colors"
+                                                        className="shrink-0 rounded-lg px-2 py-1 text-[10px] font-bold text-slate-500 hover:bg-white hover:text-red-500 transition-colors"
                                                     >
                                                         Remove
                                                     </button>
@@ -404,13 +395,13 @@ export default function ResumeLeadPopup({ isOpen, onClose, source = "resume_popu
 
                                     {/* Detected uni banner */}
                                     {detectedUni && (
-                                        <div className="flex items-center gap-3 bg-blue-50 border border-blue-200 text-slate-700 p-4 rounded-2xl text-xs md:text-sm">
-                                            <div className="w-9 h-9 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
-                                                <GraduationCap className="w-4 h-4 text-[#161D83]" strokeWidth={2} />
+                                        <div className="flex items-center gap-2 bg-blue-50 border border-blue-200 text-slate-700 px-3 py-2 rounded-xl text-xs">
+                                            <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
+                                                <GraduationCap className="w-3 h-3 text-[#161D83]" strokeWidth={2} />
                                             </div>
                                             <div>
-                                                <p className="text-[10px] font-black uppercase tracking-widest text-blue-400 mb-0.5">Target Locked</p>
-                                                <p>Generating guide for <strong className="text-slate-900">{detectedUni}</strong>.</p>
+                                                <p className="text-[9px] font-black uppercase tracking-widest text-blue-400 leading-none mb-0.5">Target Locked</p>
+                                                <p className="text-xs text-slate-700">Generating guide for <strong className="text-slate-900">{detectedUni}</strong>.</p>
                                             </div>
                                         </div>
                                     )}
@@ -493,7 +484,7 @@ export default function ResumeLeadPopup({ isOpen, onClose, source = "resume_popu
                                     </div>
 
                                     {/* Submit */}
-                                    <div className="">
+                                    <div className="pb-2">
                                         <button
                                             type="button"
                                             disabled={submitting}
